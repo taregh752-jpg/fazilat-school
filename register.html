@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ثبت‌نام در مدرسه فضیلت</title>
+  <style>
+    :root {
+      --primary: #0f4c3a;
+      --light: #f8f9fa;
+      --text: #212121;
+      --shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Vazirmatn', Tahoma, sans-serif;
+      background-color: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header {
+      background: white;
+      box-shadow: var(--shadow);
+      padding: 15px 0;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .gallery img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      cursor: pointer;
+    }
+    .section {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      margin: 30px 0;
+      box-shadow: var(--shadow);
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+      background: var(--primary);
+      color: white;
+    }
+
+    /* مودال */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+    }
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">ثبت‌نام در مدرسه فضیلت</div>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2 style="text-align:center; margin-bottom:20px;">گالری مدرسه</h2>
+      <div class="gallery" id="gallery"></div>
+    </div>
+
+    <div class="section">
+      <h2 style="text-align:center; margin-bottom:20px;">مدارک مورد نیاز</h2>
+      <ul style="padding-right:20px; line-height:2;">
+        <li>کپی شناسنامه دانش‌آموز</li>
+        <li>کپی کارت ملی والدین</li>
+        <li>قول‌نامه خانه و تعهد به رعایت قوانین مدرسه</li>
+        <li>گواهی سلامت از مراکز معتبر</li>
+        <li>7 عدد عکس پرسنلی (سایز 3×4)</li>
+        <li>لازم به ذکر است که مدارک و...پیش ثبت نام هست و باید دانش اموز بیاد مدرسه و ازش تست بگیرن و باهاش مصاحبه کنن</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2 style="text-align:center; margin-bottom:20px;">ارسال سوال</h2>
+      <form action="send_email.php" method="POST">
+        <div class="form-group">
+          <label>نام و نام خانوادگی</label>
+          <input type="text" name="name" required>
+        </div>
+        <div class="form-group">
+          <label>  شماره تماس ایتا</label>
+          <input type="text" name="contact" required>
+        </div>
+        <div class="form-group">
+          <label>سوال شما</label>
+          <textarea name="question" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn">ارسال سوال</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- مودال -->
+  <div class="modal" id="imageModal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modalImage">
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© 1403 مدرسه فضیلت — اهواز</p>
+    </div>
+  </footer>
+
+  <script>
+    const gallery = document.getElementById('gallery');
+    for (let i = 1; i <= 25; i++) {
+      const img = document.createElement('img');
+      img.src = `${i}.png`;
+      img.alt = `عکس ${i}`;
+      img.onerror = () => img.style.display = 'none';
+      img.onclick = () => openModal(img.src);
+      gallery.appendChild(img);
+    }
+
+    function openModal(src) {
+      document.getElementById('modalImage').src = src;
+      document.getElementById('imageModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
