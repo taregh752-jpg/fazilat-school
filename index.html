@@ -16,14 +16,13 @@
             theme: {
                 extend: {
                     colors: {
-                        'primary': '#0f4c3a', // رنگ اصلی
+                        'primary': '#0f4c3a',
                         'primary-light': '#1d7a5e',
                         'light-bg': '#f8f9fa',
                         'text-color': '#212121',
-                        'light-green-bg': '#f0f9f4', // برای بخش امکانات
+                        'light-green-bg': '#f0f9f4',
                     },
                     fontFamily: {
-                        // باید فونت Vazirmatn را در سیستم کاربر یا از طریق یک لینک CSS خارجی (مثل گوگل فونت) بارگذاری کنید.
                         sans: ['Vazirmatn', 'Tahoma', 'sans-serif'],
                     },
                 }
@@ -32,7 +31,6 @@
     </script>
 
     <style>
-        /* مطمئن شوید که فونت Vazirmatn را بارگذاری می‌کنید */
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
         
         body {
@@ -40,7 +38,6 @@
             @apply bg-light-bg text-text-color leading-relaxed;
         }
 
-        /* انیمیشن برای دکمه منوی موبایل */
         .hamburger-icon span {
             display: block;
             width: 25px;
@@ -60,7 +57,8 @@
         }
     </style>
 </head>
-<body class="pt-[70px]"> <header id="main-header" class="fixed top-0 w-full bg-white shadow-lg z-50">
+<body class="pt-[70px]"> 
+    <header id="main-header" class="fixed top-0 w-full bg-white shadow-lg z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <a href="#fazilat-home" class="text-2xl font-extrabold text-primary hover:text-primary-light transition-colors duration-300">
@@ -108,7 +106,7 @@
         <section class="hero h-[450px] flex items-center justify-center text-center bg-cover bg-center" 
                  style="background-image: linear-gradient(rgba(15, 76, 58, 0.8), rgba(15, 76, 58, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');">
             <div class="hero-content text-white p-6 md:p-10 rounded-xl max-w-xl md:max-w-2xl backdrop-blur-sm bg-black/30 shadow-2xl">
-                <h1 class="text-4xl md:text-5xl font-extrabold mb-4"> فضیلت  — اهواز</h1>
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4">فضیلت — اهواز</h1>
                 <p class="text-lg md:text-xl font-medium mb-6">پرورش نوجوانانی با ایمان، اخلاق و دانش در قلب اهواز</p>
                 
                 <button class="btn bg-primary-light hover:bg-primary text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105" 
@@ -117,6 +115,13 @@
                 </button>
             </div>
         </section>
+
+        <!-- ========== پیام جدید قبل از کادر ========== -->
+        <div class="container mx-auto px-4 py-6 text-center">
+            <p class="text-lg font-bold text-primary">
+                لطفاً برای اطلاع از برنامه‌های مدرسه، روی <strong>معاون پرورشی</strong> کلیک کنید.
+            </p>
+        </div>
 
         <section id="staff" class="section py-16">
             <div class="container mx-auto px-4">
@@ -135,11 +140,11 @@
                     </div>
                     <div class="card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 text-center border-t-4 border-primary">
                         <div class="text-4xl mb-4 text-primary">📚</div>
-                        <h3 class="text-xl font-bold mb-1 text-primary">آقای اسد برایتی</h3>
+                        <h3 class="text-xl font-bold mb-1 text-primary">آقای اسد براتی</h3>
                         <p class="text-gray-600 font-medium">معاون آموزشی</p>
                     </div>
-                    <div class="card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 text-center border-t-4 border-primary">
-                        <div class="text-4xl mb-4 text-primary">❤️</div>
+                    <div class="card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 text-center border-t-4 border-primary" onclick="showPrograms()">
+                        <div class="text-4xl mb-4 text-primary">❤️ ☮️</div> <!-- علامت شمی اضافه شد -->
                         <h3 class="text-xl font-bold mb-1 text-primary">آقای سعیدی</h3>
                         <p class="text-gray-600 font-medium">معاون پرورشی</p>
                     </div>
@@ -152,10 +157,10 @@
                 <h2 class="text-4xl font-extrabold text-center mb-12 text-primary">امکانات 🏟️</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     
-                    <div class="card facility bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group relative" onclick="showGallery('locker')">
-                        <div class="text-4xl mb-4 text-primary group-hover:text-primary-light transition-colors">🧥</div>
-                        <h3 class="text-xl font-bold mb-1 text-primary">رخکن</h3>
-                        <p class="text-gray-600 text-sm mb-4">فضای مجهز برای عوض کردن لباس</p>
+                    <div class="card facility bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group relative" onclick="showGallery('site-room')">
+                        <div class="text-4xl mb-4 text-primary group-hover:text-primary-light transition-colors">💻</div>
+                        <h3 class="text-xl font-bold mb-1 text-primary">اتاق سایت</h3>
+                        <p class="text-gray-600 text-sm mb-4">اتاقی با پیش از ۱۴ کامپیوتر</p>
                         <span class="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             گالری 🖼️
                         </span>
@@ -207,10 +212,35 @@
             <div class="container mx-auto px-4">
                 <p class="text-lg font-medium">© 1403 مدرسه فضیلت — اهواز</p>
                 <div class="developer-tag text-sm opacity-90 mt-2">
-                    سازنده: طارق نصیری (<a href="https://eitaa.com/eta_14" target="_blank" class="hover:text-primary-light transition-colors duration-200 underline">eta\_14@ در ایتا</a> یا <a href="mailto:taregh752@gmail.com" class="hover:text-primary-light transition-colors duration-200 underline">taregh752@gmail.com</a>)
+                    سازنده: طارق نصیری (<a href="https://eitaa.com/eta_14" target="_blank" class="hover:text-primary-light transition-colors duration-200 underline">eta_14@ در ایتا</a> یا <a href="mailto:taregh752@gmail.com" class="hover:text-primary-light transition-colors duration-200 underline">taregh752@gmail.com</a>)
                 </div>
             </div>
         </footer>
+    </div>
+    
+    <!-- ========== مدال برنامه‌ها ========== -->
+    <div id="programs-modal" class="fixed inset-0 bg-black/80 z-[3000] hidden items-center justify-center p-4" onclick="closeProgramsModal(event)">
+        <div class="bg-white rounded-xl shadow-2xl p-6 w-full max-w-3xl transform scale-95 transition-all duration-300" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center border-b pb-3 mb-4">
+                <h3 class="text-2xl font-bold text-primary">برنامه‌های پرورشی مدرسه فضیلت</h3>
+                <button onclick="hideProgramsModal()" class="text-2xl font-bold text-gray-500 hover:text-red-500 transition-colors duration-200 p-1 leading-none">
+                    &times;
+                </button>
+            </div>
+            <div class="space-y-4 text-right leading-relaxed text-gray-800">
+                <p><strong>اولیه نوجوان برتر:</strong> برنامه‌ای برای دانش‌آموزان برتر با استعدادهای درخشان و روحیهٔ انضباطی، که در روزهای پنجشنبه به مدرسه مراجعه می‌کنند و در کلاس‌های عقایدی شرکت می‌نمایند.</p>
+                
+                <p><strong>فعالیت‌های ورزشی:</strong> برگزاری بازی‌های فوتبال در زمین چمن دانشگاه.</p>
+                
+                <p><strong>سینما و اردو:</strong> برگزاری برنامه‌های سینمایی و اردوهای داخل استان و خارج استان، با دو وعده غذای کامل به عهدهٔ مدرسه.</p>
+                
+                <p><strong>اردوی نظامی:</strong> اردوهای تقویت روحیهٔ رزمندگی و انضباط.</p>
+                
+                <p><strong>کلاس‌های تقویتی:</strong> برگزاری کلاس‌های فوق‌برنامه برای تقویت دروس، ارائهٔ نمونه سوالات امتحانی و حل تمرین‌های تخصصی.</p>
+                
+                <p><strong>برنامه‌های فرهنگی:</strong> مداحی، جشن‌ها، مسابقات، جُنگ شادی ، و سایر برنامه‌های متنوع پرورشی.</p>
+            </div>
+        </div>
     </div>
     
     <div id="gallery-modal" class="fixed inset-0 bg-black/80 z-[3000] hidden items-center justify-center p-4" onclick="closeModal(event)">
@@ -222,7 +252,7 @@
                 </button>
             </div>
             <div id="modal-body" class="grid grid-cols-2 sm:grid-cols-3 gap-4 max-h-[70vh] overflow-y-auto">
-                </div>
+            </div>
             <div id="modal-note" class="mt-4 text-center text-sm font-medium text-red-600 hidden">
                 ⚠️ در حال تکمیل و افزودن تصاویر جدید هستیم.
             </div>
@@ -235,7 +265,26 @@
     </div>
 
     <script>
-        // منطق نمایش منوی موبایل
+        // ========== مدال برنامه‌ها ==========
+        function showPrograms() {
+            document.getElementById('programs-modal').classList.remove('hidden');
+            document.getElementById('programs-modal').classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function hideProgramsModal() {
+            document.getElementById('programs-modal').classList.add('hidden');
+            document.getElementById('programs-modal').classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+        
+        function closeProgramsModal(event) {
+            if (event.target === document.getElementById('programs-modal')) {
+                hideProgramsModal();
+            }
+        }
+
+        // ========== بقیه اسکریپت‌ها بدون تغییر ==========
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const hamburgerIcon = document.getElementById('hamburger-icon');
@@ -243,8 +292,6 @@
         menuBtn.addEventListener('click', () => {
             const isOpen = mobileMenu.classList.toggle('hidden');
             hamburgerIcon.classList.toggle('open');
-            
-            // انیمیشن کشویی
             if (!isOpen) {
                 mobileMenu.classList.remove('-translate-y-full');
             } else {
@@ -252,7 +299,6 @@
             }
         });
         
-        // بستن منوی موبایل پس از کلیک روی آیتم
         document.querySelectorAll('#mobile-menu a').forEach(item => {
             item.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden', '-translate-y-full');
@@ -260,7 +306,6 @@
             });
         });
 
-        // منطق مدال گالری
         const galleryModal = document.getElementById('gallery-modal');
         const modalTitle = document.getElementById('modal-title');
         const modalBody = document.getElementById('modal-body');
@@ -276,14 +321,14 @@
 
             const imageFiles = {
                 'prayer': ['نمازخانه-1.jpg', 'نمازخانه-2.jpg', 'نمازخانه-3.jpg', 'نمازخانه-4.jpg'],
-                'field': ['زمین-1.jpg', 'زمین-2.jpg', 'زمین-3.jpg', 'زمین-4.jpg'],
-                'lab': ['آزمایشگاه-1.jpg', 'آزمایشگاه-2.jpg', 'آزمایشگاه-3.jpg', 'آزمایشگاه-4.jpg']
+                'field': ['زمین-1.png', 'زمین-2.jpg', 'زمین-3.png', 'زمین-4.png'],
+                'lab': ['آزمایشگاه-1.png', 'آزمایشگاه-2.png', 'آزمایشگاه-3.png', 'آزمایشگاه-4.png'],
+                'site-room': ['اتاق-سایت-1.png', 'اتاق-سایت-2.png', 'اتاق-سایت-3.png', 'اتاق-سایت-4.png']
             };
             
             if (type === 'locker') {
                 title = 'رخکن';
                 showNote = true;
-                // باکس‌های نمایشی برای تصاویر موجود نیست
                 galleryContent = `
                     <div class="h-32 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center text-gray-500 text-sm cursor-not-allowed">عکس در حال آماده‌سازی</div>
                     <div class="h-32 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center text-gray-500 text-sm cursor-not-allowed">عکس در حال آماده‌سازی</div>
@@ -291,7 +336,10 @@
                     <div class="h-32 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center text-gray-500 text-sm cursor-not-allowed">عکس در حال آماده‌سازی</div>
                 `;
             } else if (imageFiles[type]) {
-                title = (type === 'prayer') ? 'نمازخانه' : (type === 'field' ? 'زمین چمن مصنوعی' : 'آزمایشگاه');
+                title = (type === 'prayer') ? 'نمازخانه' : 
+                        (type === 'field') ? 'زمین چمن مصنوعی' : 
+                        (type === 'lab') ? 'آزمایشگاه' : 
+                        'اتاق سایت';
                 galleryContent = imageFiles[type].map(img => `
                     <img src="${img}" alt="${img}" 
                          class="gallery-thumb w-full h-32 object-cover rounded-lg shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-zoom-in border border-gray-200"
@@ -303,21 +351,18 @@
             modalBody.innerHTML = galleryContent;
             modalNote.classList.toggle('hidden', !showNote);
 
-            // نمایش مدال با انیمیشن
             galleryModal.classList.remove('hidden');
             galleryModal.classList.add('flex');
-            document.body.style.overflow = 'hidden'; // جلوگیری از اسکرول بدنه اصلی
+            document.body.style.overflow = 'hidden';
         }
 
         function hideModal() {
-            // مخفی کردن مدال با انیمیشن
             galleryModal.classList.add('hidden');
             galleryModal.classList.remove('flex');
             document.body.style.overflow = '';
         }
         
         function closeModal(event) {
-            // بستن مدال با کلیک خارج از آن
             if (event.target === galleryModal) {
                 hideModal();
             }
@@ -333,24 +378,22 @@
         function hideImageZoom() {
             zoomedImageModal.classList.add('hidden');
             zoomedImageModal.classList.remove('flex');
-            // اگر مدال گالری باز است، اسکرول را نبند
             if (galleryModal.classList.contains('hidden')) {
                 document.body.style.overflow = '';
             }
         }
         
-        // بستن مدال‌ها با کلید ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 if (!zoomedImageModal.classList.contains('hidden')) {
                     hideImageZoom();
                 } else if (!galleryModal.classList.contains('hidden')) {
                     hideModal();
+                } else if (!document.getElementById('programs-modal').classList.contains('hidden')) {
+                    hideProgramsModal();
                 }
             }
         });
-        
     </script>
 </body>
-
 </html>
