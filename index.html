@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    
     <link rel="icon" href="icon.png" type="image/png">
-    
     <title>مدرسه فضیلت | اهواز — پرورش نوجوانان با ایمان و اخلاق</title>
-    <meta name="description" content="مدرسه فضیلت اهواز — طراحی و پیاده‌سازی توسط طارق نصیری، دانش‌آموز مدرسه فضیلت. آموزش و پرورش اسلامی و انقلابی با امکانات روز دنیا.">
+    <meta name="description" content="مدرسه فضیلت اهواز — طراحی و پیاده‌سازی توسط طارق نصیری.">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <script>
         tailwind.config = {
             theme: {
@@ -18,83 +15,116 @@
                     colors: {
                         'primary': '#0f4c3a',
                         'primary-light': '#1d7a5e',
-                        'light-bg': '#f8f9fa',
                         'text-color': '#212121',
-                        'light-green-bg': '#f0f9f4',
+                        'glass-border': 'rgba(255, 255, 255, 0.6)',
                     },
                     fontFamily: {
                         sans: ['Vazirmatn', 'Tahoma', 'sans-serif'],
                     },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
+                        'cute': '0 10px 25px -5px rgba(15, 76, 58, 0.25)',
+                    }
                 }
             }
         }
     </script>
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
         
+        /* تنظیمات اصلی بدنه و پس‌زمینه پارالاکس */
         body {
             font-family: 'Vazirmatn', Tahoma, sans-serif;
-            @apply bg-light-bg text-text-color leading-relaxed;
+            /* ترکیب لایه سفید شفاف با عکس پرچم */
+            background-image: 
+                linear-gradient(rgba(248, 250, 252, 0.88), rgba(248, 250, 252, 0.92)),
+                url('iran-flag.jpg');
+            background-attachment: fixed; /* کلید اصلی پارالاکس */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow-x: hidden;
+            @apply text-text-color leading-relaxed;
         }
 
+        /* کلاس‌های شیشه‌ای (Glassmorphism) */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75); /* سفید شیشه‌ای */
+            backdrop-filter: blur(12px); /* تاری پشت زمینه */
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        /* انیمیشن شناور بودن ایموجی‌ها */
+        @keyframes floatEmoji {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .floating-emoji {
+            display: inline-block;
+            animation: floatEmoji 3s ease-in-out infinite;
+        }
+
+        /* انیمیشن بامزه هاور (Bouncy Tilt) */
+        .cute-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* حالت فنری */
+        }
+        .cute-hover:hover {
+            transform: translateY(-8px) scale(1.02) rotate(1deg);
+            background: rgba(255, 255, 255, 0.95);
+            border-color: #0f4c3a;
+        }
+
+        /* منوی همبرگری */
         .hamburger-icon span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px 0;
-            background-color: #0f4c3a;
-            transition: all 0.3s ease-in-out;
+            display: block; width: 25px; height: 3px; margin: 5px 0;
+            background-color: #0f4c3a; transition: all 0.3s ease-in-out;
         }
-        .hamburger-icon.open span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-        .hamburger-icon.open span:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger-icon.open span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
+        .hamburger-icon.open span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+        .hamburger-icon.open span:nth-child(2) { opacity: 0; }
+        .hamburger-icon.open span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
     </style>
 </head>
+
 <body class="pt-[70px]"> 
-    <header id="main-header" class="fixed top-0 w-full bg-white shadow-lg z-50">
+
+    <!-- هدر شیشه‌ای -->
+    <header id="main-header" class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-sm border-b border-glass-border z-50 transition-all duration-300">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
-                <a href="#fazilat-home" class="text-2xl font-extrabold text-primary hover:text-primary-light transition-colors duration-300">
-                    مدرسه فضیلت
+                <a href="#fazilat-home" class="flex items-center gap-2 text-2xl font-black text-primary hover:text-primary-light transition-colors duration-300">
+                    <span class="text-3xl">🏫</span> مدرسه فضیلت
                 </a>
                 
                 <nav class="hidden md:block">
-                    <ul class="flex space-x-6 space-x-reverse">
-                        <li><a href="#staff" class="text-text-color font-semibold hover:text-primary transition-colors duration-300">کادر</a></li>
-                        <li><a href="#facilities" class="text-text-color font-semibold hover:text-primary transition-colors duration-300">امکانات</a></li>
-                        <li><a href="news.html" class="text-text-color font-semibold hover:text-primary transition-colors duration-300">اطلاعیه‌ها</a></li>
+                    <ul class="flex space-x-6 space-x-reverse items-center">
+                        <li><a href="#staff" class="text-text-color font-bold hover:text-primary hover:bg-green-50 px-3 py-2 rounded-lg transition-all">کادر</a></li>
+                        <li><a href="#facilities" class="text-text-color font-bold hover:text-primary hover:bg-green-50 px-3 py-2 rounded-lg transition-all">امکانات</a></li>
+                        <li><a href="news.html" class="text-text-color font-bold hover:text-primary hover:bg-green-50 px-3 py-2 rounded-lg transition-all">اطلاعیه‌ها</a></li>
                         <li>
-                            <a href="register.html" class="bg-primary hover:bg-primary-light text-white font-bold py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                                ثبت‌نام
+                            <a href="register.html" class="bg-primary hover:bg-primary-light text-white font-bold py-2.5 px-6 rounded-xl shadow-lg hover:shadow-green-500/40 transition-all duration-300 transform hover:-translate-y-1">
+                                ثبت‌نام 📝
                             </a>
                         </li>
                     </ul>
                 </nav>
 
-                <button id="menu-btn" class="md:hidden focus:outline-none p-2 rounded-md transition-colors duration-200" aria-label="Toggle Menu">
+                <button id="menu-btn" class="md:hidden focus:outline-none p-2 rounded-md" aria-label="Toggle Menu">
                     <div class="hamburger-icon" id="hamburger-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <span></span><span></span><span></span>
                     </div>
                 </button>
             </div>
         </div>
         
-        <nav id="mobile-menu" class="md:hidden hidden bg-white shadow-xl absolute w-full top-[68px] transform -translate-y-full transition-transform duration-300">
-            <ul class="flex flex-col p-4 space-y-4">
-                <li><a href="#staff" class="block py-2 text-text-color font-medium hover:text-primary border-b border-gray-100">کادر</a></li>
-                <li><a href="#facilities" class="block py-2 text-text-color font-medium hover:text-primary border-b border-gray-100">امکانات</a></li>
-                <li><a href="news.html" class="block py-2 text-text-color font-medium hover:text-primary border-b border-gray-100">اطلاعیه‌ها</a></li>
+        <!-- موبایل منو -->
+        <nav id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-xl shadow-xl absolute w-full top-[68px] transform -translate-y-full transition-transform duration-300 border-b border-gray-100">
+            <ul class="flex flex-col p-4 space-y-2">
+                <li><a href="#staff" class="block py-3 px-4 rounded-lg text-text-color font-bold hover:bg-green-50 hover:text-primary transition-colors">کادر آموزشی</a></li>
+                <li><a href="#facilities" class="block py-3 px-4 rounded-lg text-text-color font-bold hover:bg-green-50 hover:text-primary transition-colors">امکانات</a></li>
+                <li><a href="news.html" class="block py-3 px-4 rounded-lg text-text-color font-bold hover:bg-green-50 hover:text-primary transition-colors">اطلاعیه‌ها</a></li>
                 <li>
-                    <a href="register.html" class="block mt-2 bg-primary text-white font-bold py-2 text-center rounded-lg hover:bg-primary-light transition-colors duration-300">
+                    <a href="register.html" class="block mt-4 bg-primary text-white font-bold py-3 text-center rounded-xl shadow-md hover:bg-primary-light transition-colors">
                         ثبت‌نام کنید
                     </a>
                 </li>
@@ -103,169 +133,218 @@
     </header>
 
     <div id="fazilat-home" class="page active">
-        <section class="hero h-[450px] flex items-center justify-center text-center bg-cover bg-center" 
-                 style="background-image: linear-gradient(rgba(15, 76, 58, 0.8), rgba(15, 76, 58, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');">
-            <div class="hero-content text-white p-6 md:p-10 rounded-xl max-w-xl md:max-w-2xl backdrop-blur-sm bg-black/30 shadow-2xl">
-                <h1 class="text-4xl md:text-5xl font-extrabold mb-4">فضیلت — اهواز</h1>
-                <p class="text-lg md:text-xl font-medium mb-6">پرورش نوجوانانی با ایمان، اخلاق و دانش در قلب اهواز</p>
+        <!-- Hero Section -->
+        <section class="hero min-h-[500px] flex items-center justify-center text-center relative overflow-hidden my-4 mx-4 rounded-3xl shadow-2xl" 
+                 style="background-image: linear-gradient(rgba(15, 76, 58, 0.85), rgba(15, 76, 58, 0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center;">
+            
+            <div class="hero-content text-white p-8 md:p-12 relative z-10 max-w-3xl">
+                <span class="inline-block py-1 px-4 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-sm font-bold mb-6 animate-pulse">
+                    ✨ سال تحصیلی جدید ۱۴۰۳-۱۴۰۴
+                </span>
+                <h1 class="text-5xl md:text-7xl font-black mb-6 drop-shadow-lg tracking-tight">
+                    فضیلت <span class="text-green-300">اهواز</span>
+                </h1>
+                <p class="text-xl md:text-2xl font-medium mb-10 opacity-90 leading-relaxed">
+                    جایی برای پرورش <span class="font-bold text-yellow-300">ایمان</span>، <span class="font-bold text-yellow-300">اخلاق</span> و <span class="font-bold text-yellow-300">دانش</span>
+                </p>
                 
-                <button class="btn bg-primary-light hover:bg-primary text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105" 
+                <button class="bg-white text-primary font-extrabold py-4 px-10 rounded-full shadow-2xl hover:bg-gray-100 hover:scale-105 transition-all duration-300 flex items-center gap-2 mx-auto" 
                         onclick="document.querySelector('#staff').scrollIntoView({behavior:'smooth'})">
-                    اطلاعات بیشتر و آشنایی با کادر ⬇️
+                    آشنایی با مدرسه
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 animate-bounce" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l4.293-4.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
                 </button>
             </div>
         </section>
 
-        <!-- ========== پیام جدید قبل از کادر ========== -->
-        <div class="container mx-auto px-4 py-6 text-center">
-            <p class="text-lg font-bold text-primary">
-                لطفاً برای اطلاع از برنامه‌های مدرسه، روی <strong>معاون پرورشی</strong> کلیک کنید.
-            </p>
+        <!-- پیام متحرک -->
+        <div class="container mx-auto px-4 -mt-6 mb-8 relative z-20">
+            <div class="glass-card rounded-2xl p-4 text-center shadow-lg border-t-4 border-primary max-w-2xl mx-auto transform hover:-translate-y-1 transition-transform">
+                <p class="text-lg font-bold text-primary flex items-center justify-center gap-2 flex-wrap">
+                    <span class="text-2xl">📣</span>
+                    لطفاً برای اطلاع از برنامه‌های مدرسه، روی 
+                    <span class="underline decoration-wavy decoration-red-400 cursor-pointer">کارت معاون پرورشی</span> 
+                    کلیک کنید.
+                </p>
+            </div>
         </div>
 
-        <section id="staff" class="section py-16">
+        <!-- بخش کادر (با استایل کارتونی و گلس) -->
+        <section id="staff" class="section py-16 relative">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-extrabold text-center mb-12 text-primary">کادر آموزشی 🧑‍🏫</h2>
+                <div class="text-center mb-16">
+                    <span class="text-primary font-bold text-lg tracking-wider uppercase">تیم ما</span>
+                    <h2 class="text-4xl md:text-5xl font-black text-gray-800 mt-2">کادر آموزشی 🧑‍🏫</h2>
+                </div>
+                
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    
-                    <div class="card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 text-center border-t-4 border-primary">
-                        <div class="text-4xl mb-4 text-primary">👨‍💼</div>
-                        <h3 class="text-xl font-bold mb-1 text-primary">آقای کروشاتی</h3>
-                        <p class="text-gray-600 font-medium">مدیر مدرسه</p>
+                    <!-- کارت ۱ -->
+                    <div class="glass-card rounded-2xl p-8 text-center shadow-cute cute-hover border-b-8 border-primary relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-20 h-20 bg-green-100 rounded-bl-full -mr-4 -mt-4 opacity-50 transition-transform group-hover:scale-150"></div>
+                        <div class="text-6xl mb-6 floating-emoji drop-shadow-md">👨‍💼</div>
+                        <h3 class="text-2xl font-extrabold mb-2 text-primary">آقای کروشاتی</h3>
+                        <div class="w-12 h-1 bg-yellow-400 mx-auto mb-3 rounded-full"></div>
+                        <p class="text-gray-600 font-bold bg-white/50 inline-block px-3 py-1 rounded-lg">مدیر مدرسه</p>
                     </div>
-                    <div class="card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 text-center border-t-4 border-primary">
-                        <div class="text-4xl mb-4 text-primary">🧠</div>
-                        <h3 class="text-xl font-bold mb-1 text-primary">آقای کاردان‌زاده</h3>
-                        <p class="text-gray-600 font-medium">مشاور تحصیلی</p>
+
+                    <!-- کارت ۲ -->
+                    <div class="glass-card rounded-2xl p-8 text-center shadow-cute cute-hover border-b-8 border-blue-600 relative overflow-hidden group">
+                         <div class="absolute top-0 right-0 w-20 h-20 bg-blue-100 rounded-bl-full -mr-4 -mt-4 opacity-50 transition-transform group-hover:scale-150"></div>
+                        <div class="text-6xl mb-6 floating-emoji drop-shadow-md" style="animation-delay: 0.5s">🧠</div>
+                        <h3 class="text-2xl font-extrabold mb-2 text-gray-800">آقای کاردان‌زاده</h3>
+                        <div class="w-12 h-1 bg-blue-400 mx-auto mb-3 rounded-full"></div>
+                        <p class="text-gray-600 font-bold bg-white/50 inline-block px-3 py-1 rounded-lg">مشاور تحصیلی</p>
                     </div>
-                    <div class="card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 text-center border-t-4 border-primary">
-                        <div class="text-4xl mb-4 text-primary">📚</div>
-                        <h3 class="text-xl font-bold mb-1 text-primary">آقای اسد براتی</h3>
-                        <p class="text-gray-600 font-medium">معاون آموزشی</p>
+
+                    <!-- کارت ۳ -->
+                    <div class="glass-card rounded-2xl p-8 text-center shadow-cute cute-hover border-b-8 border-purple-600 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-20 h-20 bg-purple-100 rounded-bl-full -mr-4 -mt-4 opacity-50 transition-transform group-hover:scale-150"></div>
+                        <div class="text-6xl mb-6 floating-emoji drop-shadow-md" style="animation-delay: 1s">📚</div>
+                        <h3 class="text-2xl font-extrabold mb-2 text-gray-800">آقای اسد براتی</h3>
+                        <div class="w-12 h-1 bg-purple-400 mx-auto mb-3 rounded-full"></div>
+                        <p class="text-gray-600 font-bold bg-white/50 inline-block px-3 py-1 rounded-lg">معاون آموزشی</p>
                     </div>
-                    <div class="card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 text-center border-t-4 border-primary" onclick="showPrograms()">
-                        <div class="text-4xl mb-4 text-primary">❤️ ☮️</div> <!-- علامت شمی اضافه شد -->
-                        <h3 class="text-xl font-bold mb-1 text-primary">آقای سعیدی</h3>
-                        <p class="text-gray-600 font-medium">معاون پرورشی</p>
+
+                    <!-- کارت ۴ (پرورشی) -->
+                    <div class="glass-card rounded-2xl p-8 text-center shadow-cute cute-hover border-b-8 border-red-500 cursor-pointer relative overflow-hidden group" onclick="showPrograms()">
+                         <div class="absolute top-0 right-0 w-20 h-20 bg-red-100 rounded-bl-full -mr-4 -mt-4 opacity-50 transition-transform group-hover:scale-150"></div>
+                        <div class="text-6xl mb-6 floating-emoji drop-shadow-md" style="animation-delay: 1.5s">❤️</div>
+                        <h3 class="text-2xl font-extrabold mb-2 text-gray-800">آقای سعیدی</h3>
+                        <div class="w-12 h-1 bg-red-400 mx-auto mb-3 rounded-full"></div>
+                        <p class="text-gray-600 font-bold bg-white/50 inline-block px-3 py-1 rounded-lg">معاون پرورشی</p>
+                        <span class="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-[10px] text-red-500 font-bold opacity-0 group-hover:opacity-100 transition-opacity">کلیک کنید!</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="facilities" class="section py-16 bg-light-green-bg">
+        <!-- امکانات -->
+        <section id="facilities" class="section py-16">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-extrabold text-center mb-12 text-primary">امکانات 🏟️</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    
-                    <div class="card facility bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group relative" onclick="showGallery('site-room')">
-                        <div class="text-4xl mb-4 text-primary group-hover:text-primary-light transition-colors">💻</div>
-                        <h3 class="text-xl font-bold mb-1 text-primary">اتاق سایت</h3>
-                        <p class="text-gray-600 text-sm mb-4">اتاقی با پیش از ۱۴ کامپیوتر</p>
-                        <span class="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            گالری 🖼️
-                        </span>
+                <div class="text-center mb-16">
+                     <span class="text-primary font-bold text-lg tracking-wider uppercase">محیط مدرسه</span>
+                    <h2 class="text-4xl md:text-5xl font-black text-gray-800 mt-2">امکانات رفاهی 🏟️</h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- آیتم‌های امکانات -->
+                    <div class="glass-card rounded-3xl p-6 text-center shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer group hover:-translate-y-2 border border-white/60" onclick="showGallery('site-room')">
+                        <div class="bg-blue-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors">
+                            <span class="text-4xl group-hover:scale-110 transition-transform duration-300">💻</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-primary">اتاق سایت</h3>
+                        <p class="text-sm text-gray-500">۱۴ سیستم پیشرفته</p>
+                        <div class="mt-4 text-xs font-bold text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">مشاهده تصاویر 📸</div>
                     </div>
-                    <div class="card facility bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group relative" onclick="showGallery('prayer')">
-                        <div class="text-4xl mb-4 text-primary group-hover:text-primary-light transition-colors">🕌</div>
-                        <h3 class="text-xl font-bold mb-1 text-primary">نمازخانه</h3>
-                        <p class="text-gray-600 text-sm mb-4">فضای معنوی برای اقامه نماز</p>
-                        <span class="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            گالری 🖼️
-                        </span>
+
+                    <div class="glass-card rounded-3xl p-6 text-center shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer group hover:-translate-y-2 border border-white/60" onclick="showGallery('prayer')">
+                        <div class="bg-green-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-4 group-hover:bg-green-100 transition-colors">
+                            <span class="text-4xl group-hover:scale-110 transition-transform duration-300">🕌</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-primary">نمازخانه</h3>
+                        <p class="text-sm text-gray-500">فضای معنوی و آرام</p>
+                        <div class="mt-4 text-xs font-bold text-green-600 opacity-0 group-hover:opacity-100 transition-opacity">مشاهده تصاویر 📸</div>
                     </div>
-                    <div class="card facility bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group relative" onclick="showGallery('field')">
-                        <div class="text-4xl mb-4 text-primary group-hover:text-primary-light transition-colors">⚽</div>
-                        <h3 class="text-xl font-bold mb-1 text-primary">زمین چمن مصنوعی</h3>
-                        <p class="text-gray-600 text-sm mb-4">مکانی مناسب برای ورزش و فعالیت بدنی</p>
-                        <span class="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            گالری 🖼️
-                        </span>
+
+                    <div class="glass-card rounded-3xl p-6 text-center shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer group hover:-translate-y-2 border border-white/60" onclick="showGallery('field')">
+                        <div class="bg-yellow-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-4 group-hover:bg-yellow-100 transition-colors">
+                            <span class="text-4xl group-hover:scale-110 transition-transform duration-300">⚽</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-primary">چمن مصنوعی</h3>
+                        <p class="text-sm text-gray-500">ورزش و نشاط</p>
+                        <div class="mt-4 text-xs font-bold text-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity">مشاهده تصاویر 📸</div>
                     </div>
-                    <div class="card facility bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group relative" onclick="showGallery('lab')">
-                        <div class="text-4xl mb-4 text-primary group-hover:text-primary-light transition-colors">🔬</div>
-                        <h3 class="text-xl font-bold mb-1 text-primary">آزمایشگاه</h3>
-                        <p class="text-gray-600 text-sm mb-4">مجهز به آخرین ابزارها برای دروس عملی</p>
-                        <span class="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            گالری 🖼️
-                        </span>
+
+                    <div class="glass-card rounded-3xl p-6 text-center shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer group hover:-translate-y-2 border border-white/60" onclick="showGallery('lab')">
+                        <div class="bg-purple-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-4 group-hover:bg-purple-100 transition-colors">
+                            <span class="text-4xl group-hover:scale-110 transition-transform duration-300">🔬</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-primary">آزمایشگاه</h3>
+                        <p class="text-sm text-gray-500">تجهیزات مدرن عملی</p>
+                        <div class="mt-4 text-xs font-bold text-purple-600 opacity-0 group-hover:opacity-100 transition-opacity">مشاهده تصاویر 📸</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section py-16 bg-white">
+        <!-- آدرس -->
+        <section class="section py-16">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-extrabold text-center mb-12 text-primary">آدرس مدرسه 🗺️</h2>
-                <div class="address-box bg-gray-50 p-6 md:p-8 rounded-xl shadow-lg border-r-4 border-primary max-w-2xl mx-auto">
-                    <p class="text-lg md:text-xl font-medium text-primary leading-loose">
-                        **مدرسه فضیلت — اهواز**<br> 
-                        زیباشهر بلوار دستغیب نبش خیابان الله اکبر
-                    </p>
-                    <a href="https://maps.app.goo.gl/YourMapLinkHere" target="_blank" class="mt-4 inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300">
-                        مشاهده روی نقشه 📍
-                    </a>
+                <div class="glass-card p-8 md:p-12 rounded-3xl shadow-xl border-2 border-white max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-1 text-right">
+                        <h2 class="text-3xl font-black text-primary mb-4">آدرس ما 📍</h2>
+                        <p class="text-lg font-medium text-gray-700 leading-8">
+                            اهواز، زیباشهر، بلوار دستغیب،<br>
+                            نبش خیابان الله اکبر، مدرسه فضیلت
+                        </p>
+                    </div>
+                    <div>
+                        <a href="https://maps.app.goo.gl/YourMapLinkHere" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
+                            مسیریابی روی نقشه 🚗
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <footer class="bg-primary text-white text-center py-6 mt-10">
+        <footer class="bg-primary/95 backdrop-blur text-white text-center py-8 mt-10 border-t-4 border-primary-light">
             <div class="container mx-auto px-4">
-                <p class="text-lg font-medium">© 1403 مدرسه فضیلت — اهواز</p>
-                <div class="developer-tag text-sm opacity-90 mt-2">
-                    سازنده: طارق نصیری (<a href="https://eitaa.com/eta_14" target="_blank" class="hover:text-primary-light transition-colors duration-200 underline">eta_14@ در ایتا</a> یا <a href="mailto:taregh752@gmail.com" class="hover:text-primary-light transition-colors duration-200 underline">taregh752@gmail.com</a>)
+                <p class="text-xl font-bold mb-2">مدرسه فضیلت اهواز</p>
+                <p class="text-sm opacity-80">© 1403 — تمامی حقوق محفوظ است.</p>
+                <div class="mt-6 pt-4 border-t border-white/10 text-sm opacity-70">
+                    طراحی و توسعه  توسط: 
+                    <span class="font-bold text-yellow-300">طارق نصیری</span>
+                    <br>
+                    <div class="flex justify-center gap-4 mt-2">
+                        <a href="https://eitaa.com/eta_14" class="hover:text-white transition-colors">ایتا: eta_14@</a>
+                        <span>|</span>
+                        <a href="mailto:taregh752@gmail.com" class="hover:text-white transition-colors">:taregh752@gmail.com ایمیل</a>
+                    </div>
                 </div>
             </div>
         </footer>
     </div>
     
-    <!-- ========== مدال برنامه‌ها ========== -->
-    <div id="programs-modal" class="fixed inset-0 bg-black/80 z-[3000] hidden items-center justify-center p-4" onclick="closeProgramsModal(event)">
-        <div class="bg-white rounded-xl shadow-2xl p-6 w-full max-w-3xl transform scale-95 transition-all duration-300" onclick="event.stopPropagation()">
-            <div class="flex justify-between items-center border-b pb-3 mb-4">
-                <h3 class="text-2xl font-bold text-primary">برنامه‌های پرورشی مدرسه فضیلت</h3>
-                <button onclick="hideProgramsModal()" class="text-2xl font-bold text-gray-500 hover:text-red-500 transition-colors duration-200 p-1 leading-none">
-                    &times;
-                </button>
+    <!-- ========== مدال‌ها (بدون تغییر ساختاری، فقط استایل) ========== -->
+    <div id="programs-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[3000] hidden items-center justify-center p-4" onclick="closeProgramsModal(event)">
+        <div class="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-2xl transform scale-100 transition-all duration-300 border-4 border-primary/20" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center border-b pb-4 mb-6">
+                <h3 class="text-2xl font-black text-primary">✨ برنامه‌های پرورشی</h3>
+                <button onclick="hideProgramsModal()" class="w-10 h-10 rounded-full bg-red-100 text-red-600 hover:bg-red-600 hover:text-white transition-all flex items-center justify-center text-xl font-bold">&times;</button>
             </div>
-            <div class="space-y-4 text-right leading-relaxed text-gray-800">
-                <p><strong>اولیه نوجوان برتر:</strong> برنامه‌ای برای دانش‌آموزان برتر با استعدادهای درخشان و روحیهٔ انضباطی، که در روزهای پنجشنبه به مدرسه مراجعه می‌کنند و در کلاس‌های عقایدی شرکت می‌نمایند.</p>
-                
-                <p><strong>فعالیت‌های ورزشی:</strong> برگزاری بازی‌های فوتبال در زمین چمن دانشگاه.</p>
-                
-                <p><strong>سینما و اردو:</strong> برگزاری برنامه‌های سینمایی و اردوهای داخل استان و خارج استان، با دو وعده غذای کامل به عهدهٔ مدرسه.</p>
-                
-                <p><strong>اردوی نظامی:</strong> اردوهای تقویت روحیهٔ رزمندگی و انضباط.</p>
-                
-                <p><strong>کلاس‌های تقویتی:</strong> برگزاری کلاس‌های فوق‌برنامه برای تقویت دروس، ارائهٔ نمونه سوالات امتحانی و حل تمرین‌های تخصصی.</p>
-                
-                <p><strong>برنامه‌های فرهنگی:</strong> مداحی، جشن‌ها، مسابقات، جُنگ شادی ، و سایر برنامه‌های متنوع پرورشی.</p>
+            <div class="space-y-4 text-right leading-relaxed text-gray-700 max-h-[60vh] overflow-y-auto pl-2">
+                <div class="p-4 bg-green-50 rounded-xl border-r-4 border-green-500"><strong>🌟 اولیه نوجوان برتر:</strong> ویژه دانش‌آموزان با استعداد و منضبط (پنجشنبه‌ها).</div>
+                <div class="p-3 hover:bg-gray-50 rounded-lg transition">⚽ <strong>ورزش:</strong> فوتبال در زمین چمن دانشگاه.</div>
+                <div class="p-3 hover:bg-gray-50 rounded-lg transition">🎬 <strong>تفریحی:</strong> سینما و اردوهای استانی/خارج استانی با غذای کامل.</div>
+                <div class="p-3 hover:bg-gray-50 rounded-lg transition">🪖 <strong>نظامی:</strong> اردوهای تقویت روحیه رزمندگی.</div>
+                <div class="p-3 hover:bg-gray-50 rounded-lg transition">📝 <strong>تقویتی:</strong> کلاس‌های حل تمرین و نمونه سوال.</div>
+                <div class="p-3 hover:bg-gray-50 rounded-lg transition">🎉 <strong>فرهنگی:</strong> جشن‌ها، مداحی و جُنگ شادی.</div>
             </div>
         </div>
     </div>
     
-    <div id="gallery-modal" class="fixed inset-0 bg-black/80 z-[3000] hidden items-center justify-center p-4" onclick="closeModal(event)">
-        <div class="bg-white rounded-xl shadow-2xl p-6 w-full max-w-3xl transform scale-95 transition-all duration-300" onclick="event.stopPropagation()">
-            <div class="flex justify-between items-center border-b pb-3 mb-4">
+    <div id="gallery-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[3000] hidden items-center justify-center p-4" onclick="closeModal(event)">
+        <div class="bg-white rounded-3xl shadow-2xl p-6 w-full max-w-4xl transform scale-100 transition-all duration-300" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center border-b pb-4 mb-4">
                 <h3 id="modal-title" class="text-2xl font-bold text-primary"></h3>
-                <button onclick="hideModal()" class="text-2xl font-bold text-gray-500 hover:text-red-500 transition-colors duration-200 p-1 leading-none">
-                    &times;
-                </button>
+                <button onclick="hideModal()" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-red-500 hover:text-white transition-all">&times;</button>
             </div>
-            <div id="modal-body" class="grid grid-cols-2 sm:grid-cols-3 gap-4 max-h-[70vh] overflow-y-auto">
+            <div id="modal-body" class="grid grid-cols-2 sm:grid-cols-3 gap-4 max-h-[70vh] overflow-y-auto p-2">
             </div>
-            <div id="modal-note" class="mt-4 text-center text-sm font-medium text-red-600 hidden">
+            <div id="modal-note" class="mt-4 text-center text-sm font-medium text-orange-500 hidden bg-orange-50 p-2 rounded-lg">
                 ⚠️ در حال تکمیل و افزودن تصاویر جدید هستیم.
             </div>
         </div>
     </div>
     
-    <div id="image-zoom-modal" class="fixed inset-0 bg-black/90 z-[4000] hidden items-center justify-center" onclick="hideImageZoom()">
-        <span onclick="hideImageZoom()" class="absolute top-4 right-6 text-white text-4xl cursor-pointer p-2">&times;</span>
-        <img id="zoomed-image" src="" alt="تصویر بزرگ شده" class="max-w-[90%] max-h-[90%] rounded-lg shadow-2xl object-contain transition-transform duration-300">
+    <div id="image-zoom-modal" class="fixed inset-0 bg-black/95 z-[4000] hidden items-center justify-center backdrop-blur-xl" onclick="hideImageZoom()">
+        <span onclick="hideImageZoom()" class="absolute top-6 right-6 text-white text-5xl cursor-pointer hover:text-red-400 transition-colors">&times;</span>
+        <img id="zoomed-image" src="" alt="تصویر بزرگ شده" class="max-w-[90%] max-h-[85%] rounded-lg shadow-2xl object-contain transition-transform duration-300">
     </div>
 
+    <!-- Scripts (بدون تغییر در منطق، فقط همان توابع قبلی) -->
     <script>
-        // ========== مدال برنامه‌ها ==========
         function showPrograms() {
             document.getElementById('programs-modal').classList.remove('hidden');
             document.getElementById('programs-modal').classList.add('flex');
@@ -284,11 +363,9 @@
             }
         }
 
-        // ========== بقیه اسکریپت‌ها بدون تغییر ==========
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const hamburgerIcon = document.getElementById('hamburger-icon');
-
         menuBtn.addEventListener('click', () => {
             const isOpen = mobileMenu.classList.toggle('hidden');
             hamburgerIcon.classList.toggle('open');
@@ -318,7 +395,6 @@
             let title = '';
             let showNote = false;
             let galleryContent = '';
-
             const imageFiles = {
                 'prayer': ['نمازخانه-1.jpg', 'نمازخانه-2.jpg', 'نمازخانه-3.jpg', 'نمازخانه-4.jpg'],
                 'field': ['زمین-1.png', 'زمین-2.jpg', 'زمین-3.png', 'زمین-4.png'],
@@ -326,31 +402,28 @@
                 'site-room': ['اتاق-سایت-1.png', 'اتاق-سایت-2.png', 'اتاق-سایت-3.png', 'اتاق-سایت-4.png']
             };
             
-            if (type === 'locker') {
+            if (type === 'locker') { // اگر بخشی هنوز عکس ندارد
                 title = 'رخکن';
                 showNote = true;
                 galleryContent = `
-                    <div class="h-32 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center text-gray-500 text-sm cursor-not-allowed">عکس در حال آماده‌سازی</div>
-                    <div class="h-32 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center text-gray-500 text-sm cursor-not-allowed">عکس در حال آماده‌سازی</div>
-                    <div class="h-32 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center text-gray-500 text-sm cursor-not-allowed">عکس در حال آماده‌سازی</div>
-                    <div class="h-32 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center text-gray-500 text-sm cursor-not-allowed">عکس در حال آماده‌سازی</div>
+                    <div class="h-32 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center text-gray-400 text-sm">عکس بزودی...</div>
                 `;
             } else if (imageFiles[type]) {
-                title = (type === 'prayer') ? 'نمازخانه' : 
-                        (type === 'field') ? 'زمین چمن مصنوعی' : 
-                        (type === 'lab') ? 'آزمایشگاه' : 
-                        'اتاق سایت';
+                title = (type === 'prayer') ? 'تصاویر نمازخانه 🕌' : 
+                        (type === 'field') ? 'زمین چمن ⚽' : 
+                        (type === 'lab') ? 'آزمایشگاه 🔬' : 
+                        'اتاق سایت 💻';
                 galleryContent = imageFiles[type].map(img => `
-                    <img src="${img}" alt="${img}" 
-                         class="gallery-thumb w-full h-32 object-cover rounded-lg shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-zoom-in border border-gray-200"
-                         onclick="showImageZoom(this.src)">
+                    <div class="overflow-hidden rounded-xl border border-gray-200 shadow-sm cursor-zoom-in group">
+                        <img src="${img}" alt="${img}" 
+                             class="w-full h-32 object-cover transition-transform duration-500 group-hover:scale-110"
+                             onclick="showImageZoom(this.src)">
+                    </div>
                 `).join('');
             }
-
             modalTitle.textContent = title;
             modalBody.innerHTML = galleryContent;
             modalNote.classList.toggle('hidden', !showNote);
-
             galleryModal.classList.remove('hidden');
             galleryModal.classList.add('flex');
             document.body.style.overflow = 'hidden';
